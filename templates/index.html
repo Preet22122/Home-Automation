@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<head>
+{% load static %}
+    <title>Preet Gill</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+	<meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet"  href="{%  static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{%  static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{%  static 'css/templatemo_misc.css' %}">
+    <link rel="stylesheet" href="{%  static 'css/templatemo_style.css' %}">
+    <!-- JavaScripts -->
+    <script src="{% static 'js/jquery-1.11.1.min.js' %}"></script><!-- lightbox -->
+    <script src="{% static 'js/templatemo_custom.js' %}"></script> <!-- lightbox -->
+    <script src="{% static 'js/jquery.lightbox.js' %}"></script>
+    <script src="{% static 'js/bootstrap-collapse.js' %}"></script>
+    <!-- JavaScripts -->
+    <style>
+        #container {
+            margin: 0px auto;
+            width: 520px;
+            height: 395px;
+            border: 10px #333 solid;
+        }
+        #videoElement {
+            width: 500px;
+            height: 375px;
+            background-color: #666;
+        }
+</style>
+    <script>
+        function switch1on() {
+            var data = 1
+            var xml=new XMLHttpRequest();
+            xml.onreadystatechange=function () {
+            if(xml.readyState==4 && xml.status==200){
+                var response=xml.responseText.trim();
+                if(response=="success"){
+                    alert('LIGHT TURNED IS ON');
+                }
+            }
+        };
+
+        xml.open("GET", "switch1?d=" + data, true);
+        xml.send();
+        }
+        function switch1off() {
+            var data = 2
+            var xml=new XMLHttpRequest();
+            xml.onreadystatechange=function () {
+            if(xml.readyState==4 && xml.status==200){
+                var response=xml.responseText.trim();
+                if(response=="success"){
+                    alert('LIGHT TURNED OFF');
+                }
+            }
+        };
+
+        xml.open("GET", "switch1?d=" + data, true);
+        xml.send();
+        }
+        function switch2on() {
+            var data = 3
+            var xml=new XMLHttpRequest();
+            xml.onreadystatechange=function () {
+            if(xml.readyState==4 && xml.status==200){
+                var response=xml.responseText.trim();
+                if(response=="success"){
+                    alert('FREZER TURNED ON');
+                }
+            }
+        };
+
+        xml.open("GET", "switch1?d=" + data, true);
+        xml.send();
+        }
+        function switch2off() {
+            var data = 4
+            var xml=new XMLHttpRequest();
+            xml.onreadystatechange=function () {
+            if(xml.readyState==4 && xml.status==200){
+                var response=xml.responseText.trim();
+                if(response=="success"){
+                    alert('FREZER TURNED OFF');
+                }
+            }
+        };
+
+        xml.open("GET", "switch1?d=" + data, true);
+        xml.send();
+        }
+        function switch3on() {
+            var data = 5
+            var xml=new XMLHttpRequest();
+            xml.onreadystatechange=function () {
+            if(xml.readyState==4 && xml.status==200){
+                var response=xml.responseText.trim();
+                if(response=="success"){
+                    alert('GEYSER TURNED ON');
+                }
+            }
+        };
+
+        xml.open("GET", "switch1?d=" + data, true);
+        xml.send();
+        }
+        function switch3off() {
+            var data = 6
+            var xml = new XMLHttpRequest();
+            xml.onreadystatechange = function () {
+                if (xml.readyState == 4 && xml.status == 200) {
+                    var response = xml.responseText.trim();
+                    if (response == "success") {
+                        alert('GEYSER TURNED OFF');
+                    }
+                }
+            };
+
+            xml.open("GET", "switch1?d=" + data, true);
+            xml.send();
+        }
+         function temperature() {
+            var xml=new XMLHttpRequest();
+            xml.onreadystatechange=function () {
+            if(xml.readyState==4 && xml.status==200){
+                var response=xml.responseText.trim();
+                ans=response
+                document.getElementById('temperature').innerHTML=ans+"'C";
+            }
+        };
+        xml.open("GET", "temperature", true);
+        xml.send();
+        }
+        function humidity() {
+            var xml=new XMLHttpRequest();
+            xml.onreadystatechange=function () {
+            if(xml.readyState==4 && xml.status==200){
+                var response=xml.responseText.trim();
+                ans=response
+                document.getElementById('humidity').innerHTML=ans+"%";
+            }
+        };
+        xml.open("GET", "humidity", true);
+        xml.send();
+        }
+
+    </script>
+</head>
+<body>
+
+    <div id="templatemo_home" class="templatemo_headerimg"><img src="{% static 'images/templatemo_header.jpg' %}" alt="templatemo header"></div>
+    <div class="templatemo_headerimg_cover"><img src="{% static 'images/templatemo_header.png'%}" alt="templatemo header"></div>
+    <div class="templatemo_headerwrapper">
+        <div class="templatemo_menu">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="container-fluid">
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span></button>
+                    </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div id="top-menu">
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+                                <li><a class="menu first" href="#templatemo_home"><span>HOME</span></a></li>
+                                <li><a class="menu" href="#templatemo_service"><span>ROOM CLIMATE</span></a></li>
+                                <li><a class="menu" href="#templatemo_packages"><span>SWITCHES</span></a></li>
+                                <li><a class="menu" href="#templatemo_about"><span>CAMERA</span></a></li>
+                                <li><a class="menu" href="#templatemo_contact"><span>ABOUT ME</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.navbar-collapse --> 
+                </div>
+                <!-- /.container-fluid --> 
+            </nav>
+
+        </div>
+        <div class="clear"></div>
+        <div class="container templatemo_wrapper">
+            <!-- home start -->
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="templatemo_title"><span>PREET</span>GILL</div>
+                    <div class="templatemo_subtitle">Amritsar City</div>
+                </div>
+                <div class="col-sm-6 templatemo_home">
+                    <div class="templatemo_headertitle">YASHANPREET SINGH</div>
+                    <div class="clear"></div>
+                    <div class="templatemmo_subheader">Guru Nanak Dev University , Amritsar Electronics and communication</div>
+                    <div class="clear"></div>
+                    <div class="templatemo_hometext">
+                        <p>************************************************************************* <a rel="nofollow" href="#">+++++++++</a> ****** <a rel="nofollow" href="#">++++++</a>*******************</p>
+                        <p>*************************************************************************
+                            *************************************************************************
+                        </p>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="templatemo_homebuton"><a href="templatemo_contact">LEARN MORE</a></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <div class="templatemo_separater">
+                        <span class="page">1</span>
+                    </div>
+                </div>
+            </div>
+            <!-- home end -->   
+        </div>
+        <!-- climate start -->
+        <div id="templatemo_service" class="container">
+            <div class="row">
+                <div class="col-md-6 templatemo_service">
+                    <div class="gallery-item">
+                        <img src="{% static 'images/service/1.jpg'%}" alt="gallery 1">
+                        <div class="templatemo_service_frame"><img src="{% static 'images/templatemo_serviceimg.png'%}" alt="templatemo_frame"></div>
+                        <div class="overlay">
+                            <div class="templatemo_service_frame"><img src="{% static 'images/templatemo_serviceimg1.png'%}" alt="templatemo_frame"></div>
+                            <a href="{% static 'images/service/1.jpg'%}" data-rel="lightbox" class="fa fa-search-plus"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 templatemo_service">
+                    <div class="templatemo_service_title">TEMPERATURE</div>
+                    <div class="templatemo_service_subtitle" id="temperature"></div>
+                   <!-- <div class="templatemo_service_text">
+                        <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.                </p>
+                        <div class="clear"></div>
+                    </div>-->
+                    <div class="templatemo_morebutton" onclick="temperature()">REFRESH</div>
+                </div>
+            </div>
+            <div class="row templatemo_ordering">
+                <div class="col-md-6 templatemo_service one">
+                    <div class="templatemo_service_title">HUMIDITY</div>
+                    <div class="templatemo_service_subtitle" id="humidity"></div>
+                   <!-- <div class="templatemo_service_text">
+                        <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.                </p>
+                        <div class="clear"></div>
+                    </div>-->
+                    <div class="templatemo_morebutton" onclick="humidity()">REFRESH</div>
+                </div>
+                <div class="col-md-6 templatemo_service two">
+                    <div class="gallery-item">
+                        <img src="{% static 'images/service/2.jpg'%}" alt="gallery 2">
+                        <div class="templatemo_service_frame"><img src="{% static 'images/templatemo_serviceimg.png'%}" alt="templatemo_frame"></div>
+                        <div class="overlay">
+                            <div class="templatemo_service_frame"><img src="{% static 'images/templatemo_serviceimg1.png'%}" alt="templatemo_frame"></div>
+                            <a href="{% static 'images/service/2.jpg'%}" data-rel="lightbox" class="fa fa-search-plus"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <!-- <div class="row">
+                <div class="col-md-6 templatemo_service">
+                    <div class="gallery-item">
+                        <img src="{% static 'images/service/3.jpg'%}" alt="gallery 3">
+                        <div class="templatemo_service_frame"><img src="{% static 'images/templatemo_serviceimg.png'%}" alt="templatemo_frame"></div>
+                        <div class="overlay">
+                            <div class="templatemo_service_frame"><img src="{% static 'images/templatemo_serviceimg1.png'%}" alt="templatemo_frame"></div>
+                            <a href="{% static 'images/service/3.jpg'%}" data-rel="lightbox" class="fa fa-search-plus"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 templatemo_service">
+                    <div class="templatemo_service_title">VULPUTATE CURSUS A SIT</div>
+                    <div class="templatemo_service_subtitle">AMET NIBH VUL UTATE CURSUS DOLOR AMEIS</div>
+                    <div class="templatemo_service_text">
+                        <p>Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit.</p>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="templatemo_morebutton"><a href="#">READ MORE</a></div>
+                </div>
+            </div>-->
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <div class="templatemo_separater">
+                        <span class="page">2</span>
+                    </div>
+                </div>
+            </div>
+            <!-- climate end -->
+            <!-- switches start -->
+            <div id="templatemo_packages" class="row">
+                <div class="col-md-12">
+                    <div class="templatemo_pricing_title">SWITCH CONTROLS</div>
+                    <div class="templatemo_pricing_subtitle">SAVE LIGHT SAVE LIFE</div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="templatemo_pricing_table">
+                        <div class="templatemo_pricingbg">
+                            <img src="{% static 'images/templatemo_pricing_bg.jpg'%}" alt="templatemo price img">
+                        </div>
+                        <div class="templatemo_pricing_box">
+                            <span class="price_title">Switch</span>
+                            <span class="sign">@</span><span class="price">LIGHT</span> <span class="month">  </span>
+                        </div>
+                        <div class="templatemo_pricing_list">
+                            <ul>
+                            	<li>Room</li>
+                                <li>LED</li>
+                                <!--<li>64 GB Memory</li>
+                                <li>30,000 GB Bandwidth</li>
+                                <li>10 Email Addresses</li>
+                                <li>24/7 Level 1 Support</li>-->
+                            </ul>
+                        </div>
+                        <input type="button" class="templatemo_signup" VALUE="ON" onclick="switch1on()">
+                        <input type="button" class="templatemo_signup" VALUE="OFF" onclick="switch1off()">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="templatemo_pricing_table">
+                        <div class="templatemo_pricingbg">
+                            <img src="{% static 'images/templatemo_pricing_bg.jpg'%}" alt="templatemo price img">
+                        </div>
+                        <div class="templatemo_pricing_box">
+                            <span class="price_title">Switch</span>
+                            <span class="sign">@</span><span class="price">FREZER </span> <span class="month">    </span>
+                        </div>
+                        <div class="templatemo_pricing_list">
+                            <ul>
+                            	<li>Kitchen</li>
+                                <li>Stablizer</li>
+                                <!--<li>128 GB Memory</li>
+                                <li>50,000 GB Bandwidth</li>
+                                <li>20 Email Addresses</li>
+                                <li>24/7 Level 2 Support</li>-->
+                            </ul>
+                        </div>
+                        <input type="button" class="templatemo_signup" value="ON" onclick="switch2on()">
+                        <input type="button" class="templatemo_signup" VALUE="OFF" onclick="switch2off()">
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="templatemo_pricing_table">
+                        <div class="templatemo_pricingbg">
+                            <img src="{% static 'images/templatemo_pricing_bg.jpg'%}" alt="templatemo price img">
+                        </div>
+                        <div class="templatemo_pricing_box">
+                            <span class="price_title">Switch</span>
+                            <span class="sign">@</span><span class="price">GEYSER </span> <span class="month"> </span>
+                        </div>
+                        <div class="templatemo_pricing_list">
+                            <ul>
+                            	<li>Bathroom</li>
+                                <li>20 Ltr</li>
+                                <!--<li>256 GB Memory</li>
+                                <li>80,000 GB Bandwidth</li>
+                                <li>30 Email Addresses</li>
+                                <li>24/7 Level 3 Support</li>-->
+                            </ul>
+                        </div>
+                        <input type="button" class="templatemo_signup" value="ON" onclick="switch3on()">
+                        <input type="button" class="templatemo_signup" VALUE="OFF" onclick="switch3off()">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <div class="templatemo_separater">
+                        <span class="page">3</span>
+                    </div>
+                </div>
+            </div>
+            <!-- promotion end -->
+            <!-- work start -->
+
+               <!-- <div class="col-md-4 templatemo_work"><img src="{% static 'images/templatemo_workicon.png'%}" alt="templatemo work"></div>
+                <div class="col-md-8">-->
+                    <!--<div class="templatemo_worktitle">ABOUT US</div>
+             <div id="templatemo_about" class="row">-->
+                <div id="container">
+	                <video autoplay="true" id="videoElement">
+
+	                </video>
+                </div>
+                 <script> var video = document.querySelector("#videoElement");
+
+        if (navigator.mediaDevices.getUserMedia) {
+          navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+              video.srcObject = stream;
+            })
+            .catch(function (err0r) {
+              console.log("Something went wrong!");
+            });}</script>
+                   <div class="templatemo_sub_worktitle">LIVE VIDEO</div>
+                    <!--<p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate amet mauris. Morbi accumsan ipsum velit.</p>
+                    <p>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non  mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Mauris in erat justo.</p>
+                    <ul>
+                        <li>Morbi accumsan ipsum velit</li>
+                        <li>Nam nec tellus a odio tincidunta</li>
+                        <li>Sed non  mauris vitae erat</li>
+                        <li>Class aptent taciti sociosqu ad</li>
+                    </ul>
+                </div>
+            </div>-->
+            <div class="row">
+                <div class="col-md-6"></div>
+                <div class="col-md-6">
+                    <div class="templatemo_separater">
+                        <span class="page">4</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- work end -->
+            <!-- contact start -->
+            <div id="templatemo_contact" class="row templatemo_contact">
+                <div class="col-md-12">
+                    <div class="templatemo_contacttitle">CONTACT</div>
+                    <div class="templatemo_sub_contacttitle">SMART SERVICES TO SMART HOME</div>
+                </div>
+                <div class="col-md-4 templatemo_contactform">
+                    <form action="#" method="post">
+                      	<input type="text" name="name" id="name" class="name" placeholder="NAME">
+                      	<input type="text" name="email" id="email" class="email" placeholder="EMAIL">
+                        <input type="text" name="subject" id="subject" class="subject" placeholder="SUBJECT">
+                        <textarea name="message" class="message" placeholder="MESSAGE ... " id="message"></textarea>
+                        <div class="clear"></div>
+                        <button type="button" class="btn btn-primary">SEND</button>
+                  	</form>
+                </div>
+                <div class="col-md-8">
+                    <div class="templatemo_contactmap">
+                        <div id="templatemo_map"></div>
+                        <div class="templatemo_mapcorner"><img src="{% static 'images/templatemo_mapcorner.png'%}" alt="Google Maps"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- contact end -->
+        </div>
+        <div class="templatemo_footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                    	Copyright &copy; 2020 <a href="#">PREET GILL</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
